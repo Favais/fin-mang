@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Title = () => {
+const Title = ({ style }) => {
     return (
         <div className='flex justify-center'>
-            <h2 className='text-teal-600 text-3xl font-extrabold tracking-widest'>FINE<span className='font-normal'>bank.</span>IO</h2>
+            <h2 className={`${style} font-extrabold tracking-widest`}>FINE<span className='font-normal'>bank.</span>IO</h2>
         </div>
     )
 }
