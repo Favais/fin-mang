@@ -22,7 +22,7 @@ const data = [
     { name: '23 Sat', thisWeek: 50000, lastWeek: 12000 },
 ];
 
-const graph = () => {
+const Graph = () => {
     return (
         <div>
             <ResponsiveContainer width={"100%"} height={200}>
@@ -67,4 +67,4 @@ const graph = () => {
     )
 }
 
-export default graph
+export default Graph
