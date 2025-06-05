@@ -1,22 +1,33 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import axios from 'axios'
 import Title from '../components/Title'
 import { Link } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { FaEye } from "react-icons/fa";
+import { useContext } from 'react'
+import { ManContext } from '../context/manContext'
 
 
 const Login = () => {
     const { register, handleSubmit } = useForm()
+    const { backendUrl, setUser, setToken, navigate } = useContext(ManContext)
 
-    const onsubmit = (data) => {
-        setFormdata(data)
-
-    }
-    const [formData, setFormdata] = useState({})
     const [showPassword, setShowPassword] = useState(false)
     const toggleShowPassword = () => {
         setShowPassword(prev => !prev)
     }
+    const onsubmit = async (formData) => {
+
+        const res = await axios.post(backendUrl + '/acc/login', formData,)
+
+        if (res.data.success) {
+            setToken(res.data.token)
+            localStorage.setItem('token', res.data.token)
+            navigate('/dashboard')
+        }
+
+    }
+
 
     return (
         <div className='flex h-screen justify-center items-center gap-15'>

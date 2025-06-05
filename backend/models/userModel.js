@@ -56,25 +56,44 @@ const userSchema = new Schema({
         type: String,
         enum: ['male', 'female']
     },
-    accountNumber: {
-        type: String,
-        unique: true,
-        required: true,
-        default: () => Math.floor(1000000000 + Math.random() * 9000000000).toString(), // Random 10-digit account number
-    },
-    accountType: {
-        type: String,
-        enum: ['savings', 'checking'],
-        default: 'savings',
-    },
-    balance: {
-        type: Number,
-        default: 0,
-    },
-    transactions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'transaction'
-    }]
+    accounts:
+        [
+            {
+                cardId: {
+                    type: Number
+                },
+                bank: {
+                    type: String
+                },
+                accType: {
+                    type: String,
+                    default: 'Savings',
+                    enum: ['Savings', 'Checking', 'Loan', 'Credit Card', "investment"]
+                },
+                accountNumber: {
+                    type: Number,
+                    unique: true,
+                    sparse: true,
+                    default: () => Math.floor(1000000000 + Math.random() * 9000000000).toString(), // Random 10-digit account number
+                },
+                balance: {
+                    type: Number,
+                    default: 0
+                },
+                currency: {
+                    type: String,
+                    default: 'USD'
+                },
+                createdAt: {
+                    type: Date,
+                    default: Date.now
+                },
+                transactions: [{
+                    type: mongoose.Schema.Types.ObjectId,
+                    ref: 'transaction'
+                }]
+            }
+        ]
 })
 
 

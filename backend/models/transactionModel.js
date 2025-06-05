@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Mongoose } from "mongoose";
 
 const Schema = mongoose.Schema
 
@@ -18,7 +18,7 @@ const transactionSchema = new Schema({
         required: true
     },
     toAccount: {
-        no: {
+        accountNumber: {
             type: Number,
             required: true
         },
@@ -28,19 +28,15 @@ const transactionSchema = new Schema({
         },
     },
     fromAccount: {
-        no: {
-            type: Number,
-            required: true
-        },
-        bankName: {
-            type: String,
-            required: true
-        },
+        type: mongoose.Schema.Types.ObjectId,
     },
     status: {
         type: String,
         enum: ['pending', 'completed', 'failed'],
         default: 'pending'
+    },
+    description: {
+        type: String
     },
     date: {
         type: Date,

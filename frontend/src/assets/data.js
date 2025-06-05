@@ -45,4 +45,66 @@ const creditCardData = [
         id: 5
     }
 ];
-export default creditCardData  
+
+
+const transactions = [
+    {
+        item: "🎧 Headphones",
+        shopName: "Audio World",
+        date: "10 Apr, 2025",
+        paymentMethod: "Credit Card",
+        amount: "$75.00"
+    },
+    {
+        item: "👟 Sneakers",
+        shopName: "Urban Steps",
+        date: "10 Apr, 2025",
+        paymentMethod: "Credit Card",
+        amount: "$55.00"
+    },
+    {
+        item: "🍔 Burger",
+        shopName: "MaxBite",
+        date: "10 Apr, 2025",
+        paymentMethod: "Credit Card",
+        amount: "$11.00"
+    },
+    {
+        item: "🎬 Movie ticket",
+        shopName: "Cineplex",
+        date: "10 Apr, 2025",
+        paymentMethod: "Credit Card",
+        amount: "$14.00"
+    },
+    {
+        item: "🚕 Taxi fare",
+        shopName: "Lyft",
+        date: "10 Apr, 2025",
+        paymentMethod: "Credit Card",
+        amount: "$9.00"
+    },
+    {
+        item: "🍜 Noodles",
+        shopName: "Wok Express",
+        date: "10 Apr, 2025",
+        paymentMethod: "Credit Card",
+        amount: "$13.00"
+    },
+    {
+        item: "💻 Mouse",
+        shopName: "TechTown",
+        date: "10 Apr, 2025",
+        paymentMethod: "Credit Card",
+        amount: "$25.00"
+    },
+    {
+        item: "📱 Phone case",
+        shopName: "MobileHub",
+        date: "10 Apr, 2025",
+        paymentMethod: "Credit Card",
+        amount: "$18.00"
+    }
+];
+
+
+export { creditCardData, transactions }  

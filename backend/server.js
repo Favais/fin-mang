@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import connectdb from './config/mogodb.js'
 import 'dotenv/config'
 import userRouter from './routers/userRoutes.js'
@@ -11,6 +12,7 @@ connectdb()
 
 //middleware
 app.use(express.json())
+app.use(cors())
 
 //api
 app.use('/acc', userRouter)

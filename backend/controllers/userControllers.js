@@ -49,4 +49,32 @@ const userRegister = async (req, res) => {
     res.json({ success: true, token })
 }
 
-export { userLogin, userRegister }
+const addAccount = async (req, res) => {
+    const { userId, accountId, accType, balance, currency, createdAt, bank, accountNumber } = req.body
+
+    const accInfo = {
+        userId,
+        accountId,
+        accType,
+        balance,
+        accountNumber,
+        currency,
+        createdAt,
+        bank
+    }
+
+    const account = await userModel.findByIdAndUpdate(userId,
+        { $push: { accounts: accInfo } },
+        { new: true }
+    )
+    res.json({ success: true, account })
+}
+
+const getUser = async (req, res) => {
+    const { userId } = req
+
+    const userData = await userModel.findById(userId)
+    res.json({ success: true, userData })
+}
+
+export { userLogin, userRegister, addAccount, getUser }

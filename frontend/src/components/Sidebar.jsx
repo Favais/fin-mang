@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Title from '../components/Title'
 import { NavLink, Link } from 'react-router-dom'
 import { MdGridView, } from "react-icons/md";
@@ -9,6 +9,7 @@ import { GoGoal } from "react-icons/go";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { FaRegUserCircle } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { ManContext } from '../context/manContext';
 
 
 
@@ -17,6 +18,8 @@ import { BsThreeDotsVertical } from "react-icons/bs";
 
 
 const Sidebar = () => {
+
+    const { user } = useContext(ManContext)
     return (
         <div className=' bg-neutral-900 py-11 px-7 flex flex-col gap-48'>
             <div className='flex flex-col gap-8'>
@@ -76,7 +79,7 @@ const Sidebar = () => {
                 <div className='flex text-white gap-4 justify-between items-center py-8'>
                     <FaRegUserCircle className='size-6' />
                     <div className=''>
-                        <p className='font-semibold text-sm'>Soso Polan</p>
+                        <p className='font-semibold text-sm'>{user?.firstName} {user?.lastName}</p>
                         <p className='text-xs'>View your profile</p>
                     </div>
                     <BsThreeDotsVertical />

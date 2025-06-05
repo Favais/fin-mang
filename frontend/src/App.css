@@ -1,0 +1,11 @@
+/* index.css */
+.slick-dots li .dot {
+    background-color: #d1d5db;
+    /* gray-300 */
+    transition: background-color 0.3s ease;
+}
+
+.slick-dots li.slick-active .dot {
+    background-color: #0d9488 !important;
+    /* teal-600 */
+}

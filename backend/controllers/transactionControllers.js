@@ -4,56 +4,54 @@ import userModel from "../models/userModel.js"
 
 //create transaction
 const newTransaction = async (req, res) => {
-    const { userId, amount, transactionType, toAccount, fromAccount } = req.body
+    const { userId, amount, transactionType, toAccount, fromAccount, description } = req.body
 
     if (!userId || !amount || !transactionType || !toAccount || !fromAccount) {
-        return res.json({ success: false, message: 'Missing required field' })
+        console.log(req.body);
+        return res.json({ success: false, userId: userId, message: 'Missing required field or fields' })
+
     }
 
     try {
+        const trxdetails = {
+            userId,
+            amount,
+            transactionType,
+            toAccount,
+            fromAccount,
+            description
+        }
 
+        const newtxn = new transactionModel(trxdetails)
+        await newtxn.save()
+        const user = await userModel.findById(userId)
+        if (!user) {
+            return res.json({ message: 'user not found' })
+        }
+
+        const accountUsed = user.accounts.find(acc => acc._id.toString() === fromAccount)
+
+        const toNumber = Number(amount)
+        if (!accountUsed) {
+            return res.json({ success: false, message: 'Account not found' })
+        }
         if (transactionType === 'credit') {
-            const trxdetails = {
-                userId,
-                amount,
-                transactionType,
-                toAccount,
-                fromAccount
+            accountUsed.balance += toNumber
+        } else if (transactionType === 'debit') {
+            if (accountUsed.balance < toNumber) {
+                return res.json({ success: false, message: 'Insufficent balance' })
             }
-
-            const newtxn = new transactionModel(trxdetails)
-            const transaction = await newtxn.save()
-            const user = await userModel.findByIdAndUpdate(userId,
-                { $push: { transactions: transaction._id } }, // Push the transaction to the array
-                { new: true } // Return the updated user document
-            )
-            user.balance += amount
-            res.json({ success: true, transaction })
-            user.save()
+            accountUsed.balance -= toNumber
         }
-        if (transactionType === 'debit') {
-            const trxdetails = {
-                userId,
-                amount,
-                transactionType,
-                toAccount,
-                fromAccount
-            }
+        accountUsed.transactions.push(newtxn._id)
+        await user.save()
 
-            const newtxn = new transactionModel(trxdetails)
-            const transaction = await newtxn.save()
-            const user = await userModel.findByIdAndUpdate(userId,
-                { $push: { transactions: transaction._id } }, // Push the transaction to the array
-                { new: true } // Return the updated user document
-            )
-            user.balance -= amount
-            res.json({ success: true, transaction })
-            user.save()
-        }
+        res.json({ success: true, message: 'Transaction added', newtxn, newBalance: accountUsed.balance })
+
+
     } catch (error) {
         console.log(error);
-
-
+        res.json({ success: false, message: error.message })
     }
 
 
