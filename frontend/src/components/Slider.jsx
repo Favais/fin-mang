@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { ManContext } from '../context/manContext';
+import { ManContext } from '../context/ManContext';
 import { FaCcMastercard } from 'react-icons/fa';
 import { BsArrowUpRightCircle } from 'react-icons/bs';
 import "slick-carousel/slick/slick.css";

@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { GrTransaction } from "react-icons/gr";
-import { ManContext } from '../context/manContext';
+import { ManContext } from '../context/ManContext';
 
 const RecentTransaction = () => {
 

@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { FaAnglesRight } from "react-icons/fa6";
 import { FaBell } from "react-icons/fa";
 import { CiSearch } from "react-icons/ci";
-import { ManContext } from '../context/manContext';
+import { ManContext } from '../context/ManContext';
 
 
 

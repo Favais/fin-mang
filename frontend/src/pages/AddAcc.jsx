@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import Header from '../components/Header'
 import { useForm } from 'react-hook-form'
 import { Navigate, NavLink } from 'react-router-dom'
-import { ManContext } from '../context/manContext'
+import { ManContext } from '../context/ManContext'
 import axios from 'axios'
 
 const AddAcc = () => {

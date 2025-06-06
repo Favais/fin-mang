@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { Navigate, Outlet, replace } from 'react-router-dom'
-import { ManContext } from '../context/manContext'
+import { ManContext } from '../context/ManContext'
 
 const Auth = () => {
 

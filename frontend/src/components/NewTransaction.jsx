@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { ManContext } from '../context/manContext'
+import { ManContext } from '../context/ManContext'
 import { IoCloseSharp } from "react-icons/io5";
 import axios from 'axios';
 

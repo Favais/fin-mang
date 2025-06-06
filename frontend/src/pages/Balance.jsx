@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import Header from '../components/Header'
 import { creditCardData } from '../assets/data'
-import { ManContext } from '../context/manContext'
+import { ManContext } from '../context/ManContext'
 import { Link, Outlet } from 'react-router-dom'
 
 

@@ -9,7 +9,7 @@ import { GoGoal } from "react-icons/go";
 import { FaMoneyBillTrendUp } from "react-icons/fa6";
 import { FaRegUserCircle } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { ManContext } from '../context/manContext';
+import { ManContext } from '../context/ManContext';
 
 
 

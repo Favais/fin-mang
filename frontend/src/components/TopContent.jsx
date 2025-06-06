@@ -4,7 +4,7 @@ import { BsArrowUpRightCircle } from "react-icons/bs";
 import { GrAchievement } from "react-icons/gr";
 import { GoGoal } from "react-icons/go";
 import { GaugeComponent } from 'react-gauge-component';
-import { ManContext } from '../context/manContext';
+import { ManContext } from '../context/ManContext';
 
 import SliderSec from './Slider';
 
