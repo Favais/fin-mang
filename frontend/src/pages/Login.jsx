@@ -19,7 +19,6 @@ const Login = () => {
     const onsubmit = async (formData) => {
 
         const res = await axios.post(backendUrl + '/acc/login', formData,)
-
         if (res.data.success) {
             setToken(res.data.token)
             localStorage.setItem('token', res.data.token)
