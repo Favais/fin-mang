@@ -8,7 +8,7 @@ import Dash from './pages/Dash'
 import Balance from './pages/Balance'
 import Transactions from './pages/Transactions'
 import Auth from './components/Auth'
-import AddAcc from './pages/addAcc'
+import AddAcc from './pages/AddAcc'
 
 function App() {
 
