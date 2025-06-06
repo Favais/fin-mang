@@ -9,18 +9,27 @@ import { ManContext } from '../context/ManContext'
 
 
 const Login = () => {
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit, reset, formState: { errors } } = useForm()
     const { backendUrl, setUser, setToken, navigate } = useContext(ManContext)
-
+    console.log(backendUrl)
     const [showPassword, setShowPassword] = useState(false)
     const toggleShowPassword = () => {
         setShowPassword(prev => !prev)
     }
+    // Auto-fill demo credentials on load
+    useEffect(() => {
+        reset({
+            email: "demo@email.com",
+            password: "qwerty",
+        });
+    }, [reset]);
     const onsubmit = async (formData) => {
-
+        console.log(formData)
         const res = await axios.post(backendUrl + '/acc/login', formData,)
+        console.log(res)
         if (res.data.success) {
             setToken(res.data.token)
+            console.log(res.data.token)
             localStorage.setItem('token', res.data.token)
             navigate('/dashboard')
         }
