@@ -17,11 +17,12 @@ const Login = () => {
         setShowPassword(prev => !prev)
     }
     const onsubmit = async (formData) => {
-
+console.log(formData)
         const res = await axios.post(backendUrl + '/acc/login', formData,)
 
         if (res.data.success) {
             setToken(res.data.token)
+            console.log(res.data.token)
             localStorage.setItem('token', res.data.token)
             navigate('/dashboard')
         }
