@@ -46,25 +46,25 @@ const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className=' text-white py-3 px-4 rounded flex gap-3 items-center'>
+                        <NavLink to='/dashboard/bills' className={({ isActive }) => isActive ? 'flex text-white py-3 px-4 rounded gap-3 items-center bg-teal-600' : 'flex text-white py-3 px-4 rounded gap-3 items-center'}>
                             <LiaMoneyBillSolid className='size-4' />
                             <p className='font-light'>Bills</p>
                         </NavLink>
                     </li>
                     <li >
-                        <NavLink className=' text-white py-3 px-4 rounded flex gap-3 items-center'>
+                        <NavLink to='/dashboard/expenses' className={({ isActive }) => isActive ? 'flex text-white py-3 px-4 rounded gap-3 items-center bg-teal-600' : 'flex text-white py-3 px-4 rounded gap-3 items-center'}>
                             <FaMoneyBillTrendUp className='size-4' />
                             <p className='font-light'>Expenses</p>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className=' text-white py-3 px-4 rounded flex gap-3 items-center'>
+                        <NavLink to='/dashboard/goals' className={({ isActive }) => isActive ? 'flex text-white py-3 px-4 rounded gap-3 items-center bg-teal-600' : 'flex text-white py-3 px-4 rounded gap-3 items-center'}>
                             <GoGoal className='size-4' />
                             <p className='font-light'>Goal</p>
                         </NavLink>
                     </li>
                     <li>
-                        <NavLink className=' text-white py-3 px-4 rounded flex gap-3 items-center'>
+                        <NavLink to='/dashboard/settings' className={({ isActive }) => isActive ? 'flex text-white py-3 px-4 rounded gap-3 items-center bg-teal-600' : 'flex text-white py-3 px-4 rounded gap-3 items-center'}>
                             <CiSettings className='size-4' />
                             <p className='font-light'>Settings</p>
                         </NavLink>

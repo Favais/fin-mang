@@ -9,6 +9,10 @@ import Balance from './pages/Balance'
 import Transactions from './pages/Transactions'
 import Auth from './components/Auth'
 import AddAcc from './pages/AddAcc'
+import Bills from './pages/Bills'
+import Expenses from './pages/Expenses'
+import Goals from './pages/Goals'
+import Settings from './pages/Settings'
 
 function App() {
 
@@ -24,6 +28,10 @@ function App() {
             <Route path='balance/' element={<Balance />} />
             <Route path='balance/add' element={<AddAcc />} />
             <Route path='txn' element={<Transactions />} />
+            <Route path='bills' element={<Bills />} />
+            <Route path='expenses' element={<Expenses />} />
+            <Route path='goals' element={<Goals />} />
+            <Route path='settings' element={<Settings />} />
           </Route>
         </Route>
       </Routes>

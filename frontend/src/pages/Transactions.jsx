@@ -10,16 +10,37 @@ const Transactions = () => {
     const { user, backendUrl, token } = useContext(ManContext)
     const [showAddTransaction, setShowAddTransaction] = useState(false)
     const [transactions, setTransactions] = useState()
+    const [filteredTransactions, setFilteredTransactions] = useState()
+    const [filter, setFilter] = useState('all')
+
 
     const gettransaction = async () => {
         const res = await axios.post(backendUrl + '/trx/list', {}, { headers: { token } })
         setTransactions(res.data.transactions)
     }
+
     useEffect(() => {
         if (user) {
             gettransaction()
+
         }
     }, [user])
+
+    useEffect(() => {
+        let filtered = []
+        if (filter === 'all') {
+            filtered = transactions
+        } else {
+            filtered = transactions.filter(tx => tx.transactionType === filter)
+        }
+        setFilteredTransactions(filtered)
+    }, [user, transactions, filter])
+
+
+    const onclickFilter = (type) => {
+        setFilter(type)
+
+    }
 
     return (
         <div className='flex-1 bg-neutral-100'>
@@ -31,21 +52,19 @@ const Transactions = () => {
                 </div>
                 <div className='flex my-4 gap-6 justify-between items-center'>
                     <div className='flex my-4 gap-6'>
-                        <NavLink to='' className='text-sm text-teal-600 font-semibold border-b border-teal-600'>
+                        <NavLink onClick={() => onclickFilter('all')} className={` ${filter === 'all' ? 'text-teal-600  border-b border-teal-600' : ' font-semibold'}`}>
                             All
                         </NavLink>
-                        <NavLink to='' className='text-sm font-semibold'>
+                        <NavLink onClick={() => onclickFilter('credit')} className={` ${filter === 'credit' ? 'text-teal-600  border-b border-teal-600' : ' font-semibold'}`}>
                             Revenue
                         </NavLink>
-                        <NavLink to='' className='text-sm font-semibold'>
+                        <NavLink onClick={() => onclickFilter('debit')} className={` ${filter === 'debit' ? 'text-teal-600  border-b border-teal-600' : ' font-semibold'}`}>
                             Expenses
                         </NavLink>
                     </div>
                     <div>
                         <button onClick={() => {
                             setShowAddTransaction(true)
-                            console.log(showAddTransaction);
-
                         }} className='py-4 px-6 bg-teal-600 rounded-lg text-white cursor-pointer'>
                             Add Transaction
                         </button>
@@ -63,7 +82,7 @@ const Transactions = () => {
                     </div>
                     <div>
                         {
-                            transactions?.map((item, i) => {
+                            filteredTransactions?.map((item, i) => {
                                 const fromAccount = user.accounts.find(acc => acc._id === item.fromAccount)
                                 return (
                                     <div key={i} className=' grid grid-cols-[2fr_1.5fr_1fr_1.5fr_1fr_1fr_1fr]'>
