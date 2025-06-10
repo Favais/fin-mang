@@ -29,7 +29,7 @@ const TopContent = () => {
                             <p className='font-extrabold text-lg'>{currency}{balance?.toLocaleString()}</p>
                             <p className='text-sm'>All Account</p>
                         </div>
-                        <div className='relative w-full max-w-sm h-[200px] overflow-hidden'>
+                        <div>
                             <SliderSec />
                         </div>
 
