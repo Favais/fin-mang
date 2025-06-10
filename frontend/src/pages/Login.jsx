@@ -19,8 +19,8 @@ const Login = () => {
     // Auto-fill demo credentials on load
     useEffect(() => {
         reset({
-            email: "demo@email.com",
-            password: "qwerty",
+            email: "jane.smith@example.com",
+            password: "hashed_password_here",
         });
     }, [reset]);
     const onsubmit = async (formData) => {
