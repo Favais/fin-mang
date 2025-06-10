@@ -6,11 +6,10 @@ import { FaEye } from 'react-icons/fa'
 const Register = () => {
     const { register, handleSubmit } = useForm()
 
-    const onsubmit = (data) => {
-        setFormdata(data)
+    const onsubmit = async (formData) => {
+        const res = await axios.post(backendUrl + '/acc/register', formData)
+        console.log(res)
     }
-
-    const [formData, setFormdata] = useState()
     const [showPassword, setShowPassword] = useState()
     const toggleShowPassword = () => {
         setShowPassword(prev => !prev)
