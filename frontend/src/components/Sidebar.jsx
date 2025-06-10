@@ -19,7 +19,11 @@ import { ManContext } from '../context/ManContext';
 
 const Sidebar = () => {
 
-    const { user } = useContext(ManContext)
+    const { user, setToken } = useContext(ManContext)
+    const logout = () => {
+        setToken('')
+        localStorage.removeItem('token')
+    }
     return (
         <div className=' bg-neutral-900 py-11 px-7 flex flex-col gap-48'>
             <div className='flex flex-col gap-8'>
@@ -72,7 +76,7 @@ const Sidebar = () => {
                 </ul>
             </div>
             <div className='flex flex-col gap-11'>
-                <button className='flex py-3 px-4 gap-3 items-center bg-[rgba(255,255,255,0.1)] rounded'>
+                <button onClick={() => logout()} className='flex py-3 px-4 gap-3 items-center bg-[rgba(255,255,255,0.1)] rounded cursor-pointer'>
                     <CiLogout className='text-white' />
                     <p className='text-white'>Logout</p>
                 </button>

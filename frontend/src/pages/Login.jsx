@@ -57,7 +57,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div>
-                            <button className='py-3 px-4 w-full bg-teal-600 rounded text-white'>Login</button>
+                            <button className='py-3 px-4 w-full bg-teal-600 rounded text-white cursor-pointer'>Login</button>
                         </div>
                     </div>
                 </form>
