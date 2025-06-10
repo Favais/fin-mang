@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useMemo, useState } from "react";
 import { createContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify"; // Make sure to install react-toastify and import CSS
 
 export const ManContext = createContext()
 
@@ -16,23 +17,34 @@ const ManContextProvider = ({ children }) => {
     const backendUrl = import.meta.env.VITE_BACKEND_URL
 
     const getTransaction = async () => {
-        const res = await axios.post(backendUrl + '/trx/list', {}, { headers: { token } })
-        setTransactions(res.data.transactions)
+        try {
+            const res = await axios.post(backendUrl + '/trx/list', {}, { headers: { token } })
+            if (res.data && res.data.transactions) {
+                setTransactions(res.data.transactions)
+                toast.success("Transactions loaded successfully")
+            } else {
+                toast.error("Failed to load transactions")
+            }
+        } catch (error) {
+            toast.error(error.response?.data?.message || "Error loading transactions")
+        }
     }
-
 
     const getUser = async () => {
         try {
             if (token) {
                 const res = await axios.get(backendUrl + '/acc/user', { headers: { token } })
-                const userData = await res.data.userData
-                setUser(userData)
+                const userData = res.data.userData
+                if (userData) {
+                    setUser(userData)
+                    toast.success("User loaded successfully")
+                } else {
+                    toast.error("Failed to load user data")
+                }
             }
         } catch (error) {
-            console.log(error);
-
+            toast.error(error.response?.data?.message || "Error loading user data")
         }
-
     }
 
     const getBal = () => {
@@ -42,13 +54,11 @@ const ManContextProvider = ({ children }) => {
                 return total
             }
         }
-
     }
 
     useEffect(() => {
         console.log(token);
     }, [])
-
 
     useEffect(() => {
         const savedToken = localStorage.getItem('token')
@@ -59,7 +69,6 @@ const ManContextProvider = ({ children }) => {
         }
     }, [])
 
-
     useEffect(() => {
         if (token) {
             getUser()
@@ -67,16 +76,11 @@ const ManContextProvider = ({ children }) => {
         }
     }, [token])
 
-    // console.log(token);
-
     const value = useMemo(() => ({
         token, setToken, backendUrl, navigate,
         setUser, user, getBal, currency, getUser, transactions
     }), [token, setToken, backendUrl, navigate,
         setUser, user, currency, getUser])
-
-
-
 
     return (
         <ManContext.Provider value={value} >
