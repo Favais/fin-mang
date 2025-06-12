@@ -38,7 +38,7 @@ const Transactions = () => {
     }
 
     return (
-        <div className='flex-1 bg-neutral-100 min-h-screen'>
+        <div className='flex-1 bg-neutral-100 min-h-screen ml-14 md:ml-56'>
             <Header />
             <NewTransaction show={showAddTransaction} setShow={setShowAddTransaction} onSuccess={gettransaction} />
             <div className='my-4 mx-2 md:mx-5'>

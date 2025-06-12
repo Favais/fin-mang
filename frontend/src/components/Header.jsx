@@ -26,8 +26,8 @@ const Header = () => {
 
     return (
         <div>
-            <div className='flex pl-4 md:pl-6 pr-4 md:pr-8 py-4 md:py-5 justify-between items-start md:items-center border-b border-gray-200 gap-4 md:gap-0'>
-                <div className='flex md:flex-row gap-2 md:gap-6 items-start md:items-center'>
+            <div className='flex flex-col md:flex-row pl-4 md:pl-6 pr-4 md:pr-8 pt-4 md:py-5 justify-between items-start md:items-center border-b border-gray-200 gap-0 md:gap-0'>
+                <div className='flex md:flex-row gap-2 md:gap-6 items-center md:items-center'>
                     <p className='font-bold text-lg md:text-2xl'>{`Hello ${user?.firstName}`}</p>
                     <div className='flex items-center gap-1'>
                         <FaAnglesRight className='text-gray-400' />

@@ -13,7 +13,7 @@ const Balance = () => {
     }, [token])
 
     return (
-        <div className='flex-1 bg-neutral-100 min-h-screen'>
+        <div className='flex-1 bg-neutral-100 min-h-screen pl-16 md:ml-40'>
             <Header />
             <div className='flex gap-4 my-2 mx-5'>
                 <p className='text-xl text-neutral-500'>Balance</p>

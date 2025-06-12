@@ -68,7 +68,7 @@ const Goals = () => {
     const handleMonthChange = (e) => setSelectedMonth(e.target.value);
 
     return (
-        <div className='w-full bg-neutral-100 min-h-screen'>
+        <div className='w-full bg-neutral-100 min-h-screen ml-14 md:ml-56'>
             <Header />
             <p className='text-gray-500 text-xl py-4 px-3'>Goals</p>
             <div className='flex flex-col lg:flex-row gap-5 mx-2 md:mx-4 my-2'>

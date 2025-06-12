@@ -12,6 +12,7 @@ const ManContextProvider = ({ children }) => {
     const [user, setUser] = useState()
     const [totalBal, setTotalBal] = useState()
     const [transactions, setTransactions] = useState()
+    const [collapsed, setCollapsed] = useState(true);
 
     const navigate = useNavigate()
     const backendUrl = import.meta.env.VITE_BACKEND_URL
@@ -79,9 +80,9 @@ const ManContextProvider = ({ children }) => {
 
     const value = useMemo(() => ({
         token, setToken, backendUrl, navigate,
-        setUser, user, getBal, currency, getUser, transactions
+        setUser, user, getBal, currency, getUser, transactions, collapsed, setCollapsed
     }), [token, setToken, backendUrl, navigate,
-        setUser, user, currency, getUser])
+        setUser, user, currency, getUser, collapsed, setCollapsed])
 
     return (
         <ManContext.Provider value={value} >

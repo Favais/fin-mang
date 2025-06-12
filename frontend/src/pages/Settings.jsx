@@ -14,7 +14,7 @@ const Settings = () => {
         phone: '+880 | 51547 58868',
     };
     return (
-        <div className='w-full bg-neutral-100'>
+        <div className='w-full bg-neutral-100 ml-14 md:ml-56'>
             <Header />
             <div className="bg-white p-6 rounded-lg shadow-md mx-5 max-w-5xl mt-10">
                 {/* Tabs */}

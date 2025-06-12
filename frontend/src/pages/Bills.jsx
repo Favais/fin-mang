@@ -49,7 +49,7 @@ const Bills = () => {
     ];
 
     return (
-        <div className='flex-1 bg-neutral-100 min-h-screen'>
+        <div className='flex-1 bg-neutral-100 min-h-screen ml-14 md:ml-56'>
             <Header />
             <p className='text-lg text-neutral-400 pl-5 py-4'>Upcoming Bills</p>
             <div className='py-4 px-2 sm:px-8 bg-white mx-2 sm:mx-5 rounded-lg'>
