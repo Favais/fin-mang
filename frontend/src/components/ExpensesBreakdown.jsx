@@ -2,7 +2,6 @@ import React from 'react'
 import { FaUtensils, FaBus, FaGamepad, FaShoppingBag, FaGift } from 'react-icons/fa'
 import { FaHouse } from "react-icons/fa6";
 
-
 const ExpensesBreakdown = () => {
     const expenseData = [
         {
@@ -76,9 +75,8 @@ const ExpensesBreakdown = () => {
         Others: <FaGift />
     }
 
-
     return (
-        <div className='grid grid-cols-3 gap-3'>
+        <div className='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3'>
             {
                 expenseData.map((item, idx) => (
                     <div key={idx} className=''>
@@ -98,8 +96,8 @@ const ExpensesBreakdown = () => {
                             </div>
                         </div>
                         {
-                            item.items.map((txn, idx) => (
-                                <div className='flex justify-between bg-white border-b border-neutral-100 p-2 rounded-b-lg'>
+                            item.items.map((txn, txnIdx) => (
+                                <div key={txnIdx} className='flex justify-between bg-white border-b border-neutral-100 p-2 rounded-b-lg'>
                                     <p className='py-6 px-4 font-semibold'>{txn.description}</p>
                                     <div className='p-3 flex flex-col items-end'>
                                         <p className='text-sm font-semibold'>${txn.amount}</p>

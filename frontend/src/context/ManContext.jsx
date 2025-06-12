@@ -15,6 +15,7 @@ const ManContextProvider = ({ children }) => {
 
     const navigate = useNavigate()
     const backendUrl = import.meta.env.VITE_BACKEND_URL
+    console.log(backendUrl);
 
     const getTransaction = async () => {
         try {

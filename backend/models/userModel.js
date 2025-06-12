@@ -72,7 +72,6 @@ const userSchema = new Schema({
                 },
                 accountNumber: {
                     type: Number,
-                    unique: true,
                     sparse: true,
                     default: () => Math.floor(1000000000 + Math.random() * 9000000000).toString(), // Random 10-digit account number
                 },

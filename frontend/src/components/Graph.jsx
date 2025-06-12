@@ -7,8 +7,6 @@ import {
     YAxis,
     CartesianGrid,
     Tooltip,
-    Legend,
-    Rectangle,
     ResponsiveContainer,
 } from "recharts";
 
@@ -24,8 +22,8 @@ const data = [
 
 const Graph = () => {
     return (
-        <div>
-            <ResponsiveContainer width={"100%"} height={200}>
+        <div style={{ width: '100%', maxWidth: 700, margin: '0 auto' }}>
+            <ResponsiveContainer width="100%" aspect={2.5}>
                 <BarChart
                     data={data}
                     margin={{
@@ -35,12 +33,10 @@ const Graph = () => {
                         bottom: 0,
                     }}
                 >
-                    {/* <CartesianGrid strokeDasharray="1" /> */}
                     <XAxis
                         dataKey="name"
                         axisLine={false}
                         tickLine={false}
-
                     />
                     <YAxis
                         axisLine={false}

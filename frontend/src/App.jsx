@@ -17,7 +17,7 @@ import Settings from './pages/Settings'
 function App() {
 
   return (
-    <div className='h-screen '>
+    <div className=''>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />

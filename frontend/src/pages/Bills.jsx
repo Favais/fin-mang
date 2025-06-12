@@ -49,11 +49,12 @@ const Bills = () => {
     ];
 
     return (
-        <div className='flex-1 bg-neutral-100'>
+        <div className='flex-1 bg-neutral-100 min-h-screen'>
             <Header />
             <p className='text-lg text-neutral-400 pl-5 py-4'>Upcoming Bills</p>
-            <div className='py-4 px-8 bg-white mx-5 rounded-lg'>
-                <div className='grid grid-cols-[1fr_1fr_2fr_1.2fr_1.5fr_1fr]'>
+            <div className='py-4 px-2 sm:px-8 bg-white mx-2 sm:mx-5 rounded-lg'>
+                {/* Table Header */}
+                <div className='hidden md:grid grid-cols-[1fr_1fr_2fr_1.2fr_1.5fr_1fr]'>
                     <p className='text-sm font-semibold'>Due Date</p>
                     <p className='text-sm font-semibold'>Category</p>
                     <p className='text-sm font-semibold'>Item Description</p>
@@ -63,19 +64,43 @@ const Bills = () => {
                 </div>
                 {
                     upcomingBills.map((item, idx) => (
-                        <div key={idx} className='grid grid-cols-[1fr_1fr_2fr_1.2fr_1.5fr_1fr] py-6 border-b border-neutral-100 pr-6]'>
-                            <div className='bg-neutral-100 w-fit px-3 py-2 rounded-lg'>
-                                <p className='text-center text-sm text-neutral-500'>{new Date(item.dueDate).toLocaleString('default', { month: 'long' })}</p>
-                                <p className='text-center font-semibold text-lg text-neutral-700'>{new Date(item.dueDate).toLocaleString('default', { day: '2-digit' })}</p>
+                        <div
+                            key={idx}
+                            className='
+                                md:grid md:grid-cols-[1fr_1fr_2fr_1.2fr_1.5fr_1fr] 
+                                py-6 border-b border-neutral-100 pr-0 md:pr-6
+                                flex flex-col gap-3 md:gap-0
+                            '
+                        >
+                            {/* Desktop: Grid, Mobile: Stacked */}
+                            <div className='flex md:block items-center gap-3'>
+                                <div className='bg-neutral-100 w-fit px-3 py-2 rounded-lg'>
+                                    <p className='text-center text-sm text-neutral-500'>{new Date(item.dueDate).toLocaleString('default', { month: 'long' })}</p>
+                                    <p className='text-center font-semibold text-lg text-neutral-700'>{new Date(item.dueDate).toLocaleString('default', { day: '2-digit' })}</p>
+                                </div>
+                                <span className='md:hidden text-xs text-neutral-400 ml-2'>Due Date</span>
                             </div>
-                            <p className='flex items-center text-sm'>{item.category}</p>
-                            <p className='text-sm font-semibold'>{item.description}</p>
-                            <div className='flex flex-col'>
+                            <div className='flex md:block items-center gap-3'>
+                                <p className='flex items-center text-sm'>{item.category}</p>
+                                <span className='md:hidden text-xs text-neutral-400 ml-2'>Category</span>
+                            </div>
+                            <div className='flex md:block items-center gap-3'>
+                                <p className='text-sm font-semibold'>{item.description}</p>
+                                <span className='md:hidden text-xs text-neutral-400 ml-2'>Description</span>
+                            </div>
+                            <div className='flex flex-col md:block'>
                                 <p className='text-sm'>{currency}{item.lastCharge.amount}</p>
                                 <p className='text-sm'>{item.lastCharge.date}</p>
+                                <span className='md:hidden text-xs text-neutral-400'>Last Charge</span>
                             </div>
-                            <p>{item.paymentMethod}</p>
-                            <p className='flex justify-end'>{currency}{item.amountDue}</p>
+                            <div className='flex md:block items-center gap-3'>
+                                <p className='text-sm'>{item.paymentMethod}</p>
+                                <span className='md:hidden text-xs text-neutral-400 ml-2'>Payment Method</span>
+                            </div>
+                            <div className='flex justify-end items-center md:block'>
+                                <p className='text-sm font-semibold'>{currency}{item.amountDue}</p>
+                                <span className='md:hidden text-xs text-neutral-400 ml-2'>Amount</span>
+                            </div>
                         </div>
                     ))
                 }
